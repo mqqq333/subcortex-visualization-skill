@@ -91,3 +91,8 @@ The skill treats each figure as a visual argument, not a decorative brain icon. 
 ## Source boundary
 
 This skill was written from public materials for Annie Bryant's `subcortex_visualization` project, including the project documentation, preprint, and source code. Build-only local materials are ignored and are not intended to be pushed to GitHub.
+## Citation
+
+This skill is built around Annie Bryant's `subcortex_visualization` toolbox. If you use the underlying toolbox or its visualizations, please cite the original work:
+
+Bryant, A. G. (2026). *Subcortex visualization: A toolbox for custom data visualization in the subcortex and cerebellum*. bioRxiv. https://www.biorxiv.org/content/10.64898/2026.01.23.699785
