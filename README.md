@@ -1,10 +1,15 @@
 # subcortex-visualization skill
 
+[![Codex Skill](https://img.shields.io/badge/Codex-skill-111827)](#)
+[![Python](https://img.shields.io/badge/Python-3.11%2B-blue)](#)
+[![R](https://img.shields.io/badge/R-supported-276DC3)](#)
+[![Validate](https://github.com/mqqq333/subcortex-visualization-skill/actions/workflows/validate.yml/badge.svg)](https://github.com/mqqq333/subcortex-visualization-skill/actions/workflows/validate.yml)
+
 Codex skill for Annie Bryant's `subcortex_visualization` package.
 
 This repository contains an interactive Codex skill for reproducible two-dimensional visualization of subcortical, thalamic, brainstem, and cerebellar ROI data. It guides an agent through backend choice, environment checks, atlas selection, table validation, NIfTI parcel extraction, figure export, and Methods/caption provenance.
 
-> This is a Codex skill built around `subcortex_visualization`; it does not vendor the original package, paper PDF, or downloaded source archive.
+> This repository is an agent skill layer, not a fork or replacement of the original toolbox. It does not vendor the original package, paper PDF, or downloaded source archive.
 
 ## What it helps with
 
@@ -17,12 +22,12 @@ This repository contains an interactive Codex skill for reproducible two-dimensi
 - Write concise Methods, captions, and provenance notes.
 - Plan custom segmentation-to-SVG atlas workflows.
 
-
 ## Example output gallery
 
 The showcase below was reproduced locally with this repository, using the `subcortex_visualization` plotting API and atlas-index colours. It is not copied from the upstream documentation. In real use, the skill maps your ROI values onto the same vector atlas scenes.
 
 ![All atlas showcase](assets/gallery/all_atlas_showcase.png)
+
 Reproduce it locally with:
 
 ```bash
@@ -30,6 +35,27 @@ python subcortex-visualization/scripts/make_all_atlas_showcase.py --output asset
 ```
 
 The skill supports both Python and R workflows: Python is best for NIfTI/MNI-space pipelines, while R is best for tidyverse, patchwork, and ggseg-style composites.
+
+## Try it in 30 seconds
+
+After installing the underlying `subcortex_visualization` package, validate and plot the bundled demo ROI table:
+
+```bash
+python subcortex-visualization/scripts/check_subcortex_environment.py --backend python
+python subcortex-visualization/scripts/validate_subcortex_table.py \
+  --input subcortex-visualization/assets/examples/thalamus_thomas_demo.csv \
+  --atlas Thalamus_THOMAS \
+  --value-column value
+python subcortex-visualization/scripts/plot_subcortex_table.py \
+  --input subcortex-visualization/assets/examples/thalamus_thomas_demo.csv \
+  --output-prefix demo/thalamus_thomas_demo \
+  --atlas Thalamus_THOMAS \
+  --value-column value \
+  --hemisphere both \
+  --formats png,svg
+```
+
+The demo writes preview files under `demo/`, which is ignored by git.
 
 ## Quick start
 
@@ -84,6 +110,9 @@ subcortex-visualization/
 |-- SKILL.md
 |-- agents/
 |   `-- openai.yaml
+|-- assets/
+|   `-- examples/
+|       `-- thalamus_thomas_demo.csv
 |-- references/
 |   |-- atlas_catalog.md
 |   |-- environment_setup.md
@@ -94,6 +123,7 @@ subcortex-visualization/
     |-- check_subcortex_environment.py
     |-- extract_subcortex_segstats.py
     |-- inspect_subcortex_atlas.py
+    |-- make_all_atlas_showcase.py
     |-- plot_subcortex_table.py
     `-- validate_subcortex_table.py
 ```
@@ -105,7 +135,6 @@ The skill treats each figure as a visual argument, not a decorative brain icon. 
 ## Source boundary
 
 This skill was written from public materials for Annie Bryant's `subcortex_visualization` project, including the project documentation, preprint, and source code. Build-only local materials are ignored and are not intended to be pushed to GitHub.
-
 
 ## Star History
 

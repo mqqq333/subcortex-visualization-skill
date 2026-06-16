@@ -1,0 +1,44 @@
+name: validate
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate-skill:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate skill structure and tracked assets
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          root = Path('subcortex-visualization')
+          skill = root / 'SKILL.md'
+          assert skill.exists(), 'missing SKILL.md'
+          text = skill.read_text(encoding='utf-8')
+          assert text.startswith('---\n'), 'missing YAML frontmatter'
+          assert re.search(r'^name:\s*subcortex-visualization\s*$', text, re.M), 'wrong skill name'
+          assert re.search(r'^description:\s*.+', text, re.M), 'missing description'
+          required = [
+              'agents/openai.yaml',
+              'references/interactive_workflow.md',
+              'references/environment_setup.md',
+              'references/r_usage.md',
+              'scripts/check_subcortex_environment.py',
+              'scripts/plot_subcortex_table.py',
+              'scripts/make_all_atlas_showcase.py',
+              'assets/examples/thalamus_thomas_demo.csv',
+          ]
+          for rel in required:
+              assert (root / rel).exists(), f'missing {rel}'
+          assert Path('assets/gallery/all_atlas_showcase.png').exists(), 'missing README gallery image'
+          print('skill structure ok')
+          PY
+      - name: Compile Python helper scripts
+        run: |
+          python -m py_compile subcortex-visualization/scripts/*.py
