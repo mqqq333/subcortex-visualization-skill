@@ -1,0 +1,6 @@
+interface:
+  display_name: "Subcortex Visualization"
+  short_description: "Interactively design Python/R 2D subcortex and cerebellum figures."
+  default_prompt: "Use $subcortex-visualization to help me choose Python or R, define a visualization contract, validate data, preview/QC, and export SVG/PDF."
+policy:
+  allow_implicit_invocation: true

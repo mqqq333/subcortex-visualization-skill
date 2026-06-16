@@ -1,0 +1,31 @@
+# Python/editor caches
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
+.ipynb_checkpoints/
+
+# Local-only build materials used to create the skill; do NOT push to GitHub
+/skill/
+/references/
+/literature/
+/demo_thalamus/
+/scripts/
+
+# Large/generated neuroimaging or design exports
+*.nii
+*.nii.gz
+*.mgz
+*.gii
+*.func.gii
+*.dscalar.nii
+*.psd
+*.ai
+
+# Keep the installable skill bundle tracked
+!/subcortex-visualization/
+!/subcortex-visualization/**
+
+# Re-ignore generated caches inside the tracked skill bundle
+/subcortex-visualization/**/__pycache__/
+/subcortex-visualization/**/*.pyc
