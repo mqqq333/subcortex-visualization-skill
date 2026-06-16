@@ -17,6 +17,20 @@ This repository contains an interactive Codex skill for reproducible two-dimensi
 - Write concise Methods, captions, and provenance notes.
 - Plan custom segmentation-to-SVG atlas workflows.
 
+
+## Example output gallery
+
+The showcase below was reproduced locally with this repository, using the `subcortex_visualization` plotting API and atlas-index colours. It is not copied from the upstream documentation. In real use, the skill maps your ROI values onto the same vector atlas scenes.
+
+![All atlas showcase](assets/gallery/all_atlas_showcase.png)
+Reproduce it locally with:
+
+```bash
+python subcortex-visualization/scripts/make_all_atlas_showcase.py --output assets/gallery/all_atlas_showcase.png
+```
+
+The skill supports both Python and R workflows: Python is best for NIfTI/MNI-space pipelines, while R is best for tidyverse, patchwork, and ggseg-style composites.
+
 ## Quick start
 
 Copy the skill folder into your Codex skills directory:
@@ -91,6 +105,11 @@ The skill treats each figure as a visual argument, not a decorative brain icon. 
 ## Source boundary
 
 This skill was written from public materials for Annie Bryant's `subcortex_visualization` project, including the project documentation, preprint, and source code. Build-only local materials are ignored and are not intended to be pushed to GitHub.
+
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=mqqq333/subcortex-visualization-skill&type=Date)](https://www.star-history.com/#mqqq333/subcortex-visualization-skill&Date)
 
 ## Citation
 

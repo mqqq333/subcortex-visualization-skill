@@ -29,3 +29,9 @@ Thumbs.db
 # Re-ignore generated caches inside the tracked skill bundle
 /subcortex-visualization/**/__pycache__/
 /subcortex-visualization/**/*.pyc
+# README gallery build intermediates
+/assets/gallery/_showcase_tiles/
+/assets/gallery/example_*
+/assets/gallery/*_simulated_values.csv
+/assets/gallery/subcortex-skill-gallery*.png
+/assets/gallery/*.svg
